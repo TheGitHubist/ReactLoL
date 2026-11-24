@@ -1,0 +1,249 @@
+/* ------------------------------------------------------------------
+   Yu-Gi-Oh! card face
+   Everything is sized in cqw (1cqw = 1% of the card width), so the card
+   scales perfectly in the preview, the collection grid or a detail page.
+   Real card ratio: 59 x 86 mm.
+------------------------------------------------------------------- */
+
+.ygo-card {
+  container-type: inline-size;
+  width: 100%;
+  aspect-ratio: 59 / 86;
+  filter: drop-shadow(0 1.5cqw 3cqw rgba(0, 0, 0, 0.55));
+}
+
+.ygo-frame {
+  --frame-a: #e8c46a;
+  --frame-b: #c99a3a;
+  --frame-c: #8f6a1f;
+  --box: #efe3b8;
+  --name-color: #111;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 4.4cqw 4.6cqw 4.4cqw;
+  border: 0.9cqw solid #0c0c0c;
+  border-radius: 2.2cqw;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, transparent 35%, rgba(0, 0, 0, 0.18) 100%),
+    linear-gradient(160deg, var(--frame-a), var(--frame-b) 55%, var(--frame-c));
+  color: #111;
+  font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  overflow: hidden;
+}
+
+/* ---- Frame colours per card type ---- */
+.ygo-normal-monster { --frame-a: #f1d889; --frame-b: #d9b04c; --frame-c: #a8802a; --box: #f2e6b4; }
+.ygo-effect-monster { --frame-a: #e59a5a; --frame-b: #c2682f; --frame-c: #8d4617; --box: #e9cfa4; }
+.ygo-fusion-monster { --frame-a: #b98ad0; --frame-b: #8450a6; --frame-c: #5a2f78; --box: #d8c6df; }
+.ygo-synchro-monster { --frame-a: #fbfbf8; --frame-b: #dcdcd4; --frame-c: #a9a99f; --box: #ecebe4; }
+.ygo-xyz-monster { --frame-a: #3a3a40; --frame-b: #1a1a1e; --frame-c: #0a0a0c; --box: #cfcdc8; --name-color: #f4f1e8; }
+.ygo-link-monster { --frame-a: #3f8bd0; --frame-b: #1f5f9e; --frame-c: #123c66; --box: #c4d4e2; --name-color: #f4f1e8; }
+.ygo-spell-card { --frame-a: #3fb3a0; --frame-b: #1c8a79; --frame-c: #0f5b50; --box: #c9e1d9; --name-color: #f4f1e8; }
+.ygo-trap-card { --frame-a: #cf6aa1; --frame-b: #a23d78; --frame-c: #6c2150; --box: #e3c7d6; --name-color: #f4f1e8; }
+
+/* ---- Name bar ---- */
+.ygo-name-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2cqw;
+  height: 8.6cqw;
+  padding: 0 1.6cqw 0 2.4cqw;
+  border-radius: 1cqw;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 0.35cqw rgba(0, 0, 0, 0.35), inset 0 0.5cqw 1cqw rgba(0, 0, 0, 0.25);
+}
+
+.ygo-name {
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+  font-size: 5.6cqw;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--name-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Gold name for Xyz/Link/Spell/Trap is not canon; keep it clean */
+
+/* ---- Attribute medallion ---- */
+.ygo-attr {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 6.4cqw;
+  height: 6.4cqw;
+  border-radius: 50%;
+  border: 0.45cqw solid #f1e2b0;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: 3.6cqw;
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 0.2cqw 0.4cqw rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0.3cqw 0.6cqw rgba(0, 0, 0, 0.5), inset 0 0.4cqw 0.6cqw rgba(255, 255, 255, 0.35);
+  background: #444;
+}
+.ygo-attr-dark   { background: radial-gradient(circle at 35% 30%, #a06cc0, #4b2468 70%); }
+.ygo-attr-light  { background: radial-gradient(circle at 35% 30%, #fff3b0, #d6a92a 70%); color: #5a3d00; text-shadow: none; }
+.ygo-attr-earth  { background: radial-gradient(circle at 35% 30%, #b99a6a, #6a4a22 70%); }
+.ygo-attr-water  { background: radial-gradient(circle at 35% 30%, #7ec8f2, #1f66a8 70%); }
+.ygo-attr-fire   { background: radial-gradient(circle at 35% 30%, #ff9a6a, #b3260f 70%); }
+.ygo-attr-wind   { background: radial-gradient(circle at 35% 30%, #9be0a8, #2f8a4a 70%); }
+.ygo-attr-divine { background: radial-gradient(circle at 35% 30%, #ffe27a, #b5781a 70%); color: #4d2f00; text-shadow: none; }
+.ygo-attr-spell-card { background: radial-gradient(circle at 35% 30%, #6fe0c8, #0f7f6c 70%); }
+.ygo-attr-trap-card  { background: radial-gradient(circle at 35% 30%, #ef8cc0, #8f2a62 70%); }
+
+/* ---- Level / Rank row ---- */
+.ygo-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55cqw;
+  height: 5.6cqw;
+  padding: 0 1.2cqw;
+}
+.ygo-meta-row.is-xyz { flex-direction: row-reverse; justify-content: flex-end; }
+
+.ygo-meta-label {
+  margin-right: 0.8cqw;
+  font-size: 2.2cqw;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+.is-xyz .ygo-meta-label { margin: 0 0 0 0.8cqw; color: rgba(255, 255, 255, 0.55); }
+
+.ygo-star {
+  display: block;
+  width: 3.5cqw;
+  height: 3.5cqw;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff8d7a, #d22a14 55%, #7e0f00);
+  box-shadow: 0 0 0 0.3cqw #f5dfa0, 0 0.3cqw 0.5cqw rgba(0, 0, 0, 0.5);
+}
+.is-xyz .ygo-star {
+  background: radial-gradient(circle at 35% 30%, #5d5d66, #15151a 60%, #000);
+  box-shadow: 0 0 0 0.3cqw #f5dfa0, 0 0.3cqw 0.5cqw rgba(0, 0, 0, 0.5);
+}
+
+.ygo-st-label {
+  font-size: 3.4cqw;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--name-color);
+}
+
+/* ---- Artwork ---- */
+.ygo-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  margin: 0 3cqw;
+  background: #111;
+  border: 0.7cqw solid #d8b45a;
+  outline: 0.35cqw solid #0c0c0c;
+  box-shadow: inset 0 0 1.4cqw rgba(0, 0, 0, 0.7), 0 0.5cqw 1cqw rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.ygo-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ygo-art-empty {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 220, 140, 0.55), transparent 55%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.04) 0 1.2cqw, transparent 1.2cqw 2.4cqw),
+    #17141c;
+}
+.ygo-art-empty::after {
+  content: "✦";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 14cqw;
+  color: rgba(255, 226, 150, 0.9);
+}
+
+.ygo-set-row {
+  display: flex;
+  justify-content: flex-end;
+  height: 3.4cqw;
+  padding: 0.5cqw 3.4cqw 0;
+}
+.ygo-set {
+  max-width: 60%;
+  font-family: system-ui, sans-serif;
+  font-size: 1.9cqw;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: var(--name-color);
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Text box ---- */
+.ygo-text-box {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.6cqw;
+  padding: 1.6cqw 2.2cqw 1.2cqw;
+  background: var(--box);
+  border: 0.55cqw solid rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 1.2cqw rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.ygo-kind {
+  margin: 0 0 0.9cqw;
+  padding-bottom: 0.7cqw;
+  border-bottom: 0.25cqw solid rgba(0, 0, 0, 0.55);
+  font-size: 3.2cqw;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #111;
+}
+
+.ygo-desc {
+  margin: 0;
+  flex: 1;
+  min-height: 0;
+  font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  line-height: 1.22;
+  color: #151515;
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+.ygo-desc.is-flavor { font-style: italic; }
+
+.ygo-stats {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3.4cqw;
+  margin: 0.8cqw 0 0;
+  padding-top: 0.7cqw;
+  border-top: 0.25cqw solid rgba(0, 0, 0, 0.55);
+  font-size: 3.6cqw;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #111;
+}

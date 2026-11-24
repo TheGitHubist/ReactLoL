@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Duelist Archive
 
-## Getting Started
+A Yu-Gi-Oh! TCG/OCG card archive built with Next.js and live card data from YGOPRODeck. Browse the complete database, alphabetically grouped and paginated by archetype; search dynamically, save favorite cards, inspect card records, personalize a duelist profile, and play Yugiohdle.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Search and page through the full YGOPRODeck database, grouped alphabetically by archetype. Search updates live as you type; filter by card type, attribute, race, ATK, and DEF.
+- Card pages show all available artwork variants, effect text, stats, printings, market prices, banlist information, and the source record.
+- Favorite any database card and find it on the **Favorites** page.
+- Play **Yugiohdle**: guess a random card with an archetype, excluding Normal Monsters. Type, attribute, race, level, ATK, DEF, archetype, and frame feedback help narrow each guess; extra archetype, card type, and race hints unlock after 6, 12, and 18 guesses.
+- Personalize a duelist profile saved in the current browser.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The app's `/api/cards`, `/api/archetypes`, and `/api/yugiohdle` routes proxy YGOPRODeck's public API without caching. While the catalog is open, it refreshes the full card list every 60 seconds. Favorites and the duelist profile are saved in the current browser. Artwork is loaded from the image URLs returned by the API.
